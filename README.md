@@ -7,3 +7,5 @@ Created by:
 
 ## Screenshots from the application
 ![](https://github.com/arnomalone/DooDoo/blob/master/1.jpg)
+![](https://github.com/arnomalone/DooDoo/blob/master/2.jpg)
+![](https://github.com/arnomalone/DooDoo/blob/master/3.jpg)
