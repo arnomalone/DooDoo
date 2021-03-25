@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:doodoo_flutter/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:doodoo_flutter/model/task.dart';
+import 'package:provider/provider.dart';
+import 'package:doodoo_flutter/model/tasks_data.dart';
 
 class BottomContainer extends StatelessWidget {
 
-  final Function addTaskCallback;
-
-  BottomContainer({this.addTaskCallback});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class BottomContainer extends StatelessWidget {
                 taskText = value;
               },
               autofocus: true,
-              cursorColor: kLightColor,
+              cursorColor: kLightColor, 
               style: TextStyle(
                 color: kLightColor,
               ),
@@ -44,7 +44,11 @@ class BottomContainer extends StatelessWidget {
             ),
             FlatButton(
               onPressed: () {
-                if(taskText!=null) addTaskCallback(taskText);
+                if(taskText!=null)
+                  {
+                    Provider.of<TasksData>(context).addTask(taskText);
+                    Navigator.pop(context);
+                  }
               },
               child: Text(
                   'Add'

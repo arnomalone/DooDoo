@@ -1,31 +1,27 @@
 import 'package:flutter/cupertino.dart';
 import 'tasks_tile.dart';
-import 'package:doodoo_flutter/model/task.dart';
+import 'package:provider/provider.dart';
+import 'package:doodoo_flutter/model/tasks_data.dart';
 
-class TasksList extends StatefulWidget {
-
-  final List<Task> tasks;
-
-  TasksList({this.tasks});
-
-  @override
-  _TasksListState createState() => _TasksListState();
-}
-
-class _TasksListState extends State<TasksList> {
-
+class TasksList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(itemBuilder: (context, index) {
-      return TaskTile(
-        name: widget.tasks[index].name,
-        isChecked: widget.tasks[index].isDone,
-        checkboxCallback:  (checkboxState) {
-          setState(() {
-            widget.tasks[index].toggleDone();
-          });
-}
-      );
-    }, itemCount: widget.tasks.length,);
+    return Consumer<TasksData>(
+      builder: (context, taskData, child) {
+        return ListView.builder(itemBuilder: (context, index) {
+          final task = taskData.tasks[index];
+          return TaskTile(
+              name: task.name,
+              isChecked: task.isDone,
+              checkboxCallback: (checkboxState) {
+                taskData.updateTask(task);
+              },
+            longPressCallBack: (){
+                taskData.deleteTask(task);
+            },
+          );
+        }, itemCount: taskData.taskCount,);
+      }
+    );
   }
 }
