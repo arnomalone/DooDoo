@@ -31,7 +31,8 @@ class TasksData extends ChangeNotifier {
   }
 
   void deleteTask (Task task) {
-    _tasks.remove(task);
+    if(task.isDone) _tasks.remove(task);
+    else updateTask(task);
     notifyListeners();
   }
 }

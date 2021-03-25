@@ -28,7 +28,7 @@ class BottomContainer extends StatelessWidget {
                 taskText = value;
               },
               autofocus: true,
-              cursorColor: kLightColor, 
+              cursorColor: kLightColor,
               style: TextStyle(
                 color: kLightColor,
               ),
@@ -37,6 +37,11 @@ class BottomContainer extends StatelessWidget {
                 hintStyle: TextStyle(
                   color: kLightColor,
                 ),
+                // disabledBorder: OutlineInputBorder(
+                //   borderSide: BorderSide(
+                //     color: kLightColor,
+                //   )
+                // )
               ),
             ),
             SizedBox(
